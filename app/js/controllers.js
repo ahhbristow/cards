@@ -1,31 +1,35 @@
 'use strict';
 
 /* Controllers */
-var phonecatApp = angular.module('phonecatApp', []);
+var cardsApp = angular.module('cardsApp', []);
 
-phonecatApp.controller('PhoneListCtrl', function ($scope,socket) {
+cardsApp.controller('CardsCtrl', function ($scope,socket) {
 
-	$scope.objects = [
-		{name:'one',x:'0',y:'0'},
-		{name:'two',x:'100',y:'0'}
-	];
+	$scope.cards = {
+		"one" : {
+			name:'one', x:'0', y:'0'
+		},
+		"two" : {
+			name:'two', x:'100', y:'0'
+		}
+	};
 
 
 	// TODO: All these need to be changed to member functions
 	
-	$scope.dragEnd = function(object) {
+	$scope.dragEnd = function(card) {
 	}
 
-	$scope.dragMove = function(object) {
-		$scope.registerMove(object);
+	$scope.dragMove = function(card) {
+		$scope.registerMove(card);
 	}
 
 	// Socket IO stuff
-	$scope.registerMove=function(object) {
+	$scope.registerMove=function(card) {
 		socket.emit('move', {
-			name: object.name,
-			x: object.x,
-			y: object.y
+			name: card.name,
+			x: card.x,
+			y: card.y
 		}, function (result) {
 			if (!result) {
 				console('There was an error registering move');
@@ -33,6 +37,17 @@ phonecatApp.controller('PhoneListCtrl', function ($scope,socket) {
 		});
 	}
 
+	socket.on('move', function(msg){
+		$scope.handle_move_msg(msg)
+	});
 
+	$scope.handle_move_msg = function(msg) {
+	
+		var card_id = msg.name;
+		var x = msg.x;
+		var y = msg.y;
 
+		$scope.cards[card_id].x = x;
+		$scope.cards[card_id].y = y;
+	}
 });

@@ -2,7 +2,7 @@
 
 /* Services */
 
-phonecatApp.factory('socket', function ($rootScope) {
+cardsApp.factory('socket', function ($rootScope) {
 	var socket = io.connect();
 	return {
 		on: function (eventName, callback) {

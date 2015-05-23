@@ -1,4 +1,4 @@
-<html ng-app="phonecatApp">
+<html ng-app="cardsApp">
 	<head>
 		<meta charset="utf-8">
 		<title>My HTML File</title>
@@ -16,19 +16,12 @@
 		<script src="http://localhost:8000/js/directives.js"></script>
 								
 	</head>
-	<body ng-controller="PhoneListCtrl">
+	<body ng-controller="CardsCtrl">
 
-		<ul>
-			<li ng-repeat="phone in phones">
-				<span>{{phone.name}}</span>
-				<p>{{phone.snippet}}</p>
-			</li>
-		</ul>
-
-		<div id="draggable_objects" >
-			<div class="card" ng-repeat="obj in objects" draggable x="obj.x" y="obj.y" ng-style="{top:obj.y,left:obj.x}">
-				<span>{{obj.name}}</span>
-				<p><span>{{obj.x}}</span>,<span>{{obj.y}}</span></p>
+		<div id="draggable_cardects" >
+			<div class="card" ng-repeat="card in cards" draggable x="card.x" y="card.y" ng-style="{top:card.y,left:card.x}">
+				<span>{{card.name}}</span>
+				<p><span>{{card.x}}</span>,<span>{{card.y}}</span></p>
 			</div>
 		</div>
 

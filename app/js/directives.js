@@ -2,7 +2,7 @@
 
 /* Directives */
 
-phonecatApp.directive('draggable', function() {
+cardsApp.directive('draggable', function() {
 	return {
 		//A = attribute, E = Element, C = Class and M = HTML Comment
 		restrict:'A',
@@ -14,14 +14,14 @@ phonecatApp.directive('draggable', function() {
 					scope.$eval(attrs.x + '=' + $(element).offset().left);
 					scope.$eval(attrs.y + '=' + $(element).offset().top);
 					scope.$apply(function() {
-						scope.dragEnd(scope.obj);
+						scope.dragEnd(scope.card);
 					});
 				},
 				drag:function(e, ui) {
 					scope.$eval(attrs.x + '=' + $(element).offset().left);
 					scope.$eval(attrs.y + '=' + $(element).offset().top);
 					scope.$apply(function() {
-						scope.dragMove(scope.obj);
+						scope.dragMove(scope.card);
 					});
 				}
 			});
