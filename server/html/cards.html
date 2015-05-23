@@ -1,0 +1,36 @@
+<html ng-app="phonecatApp">
+	<head>
+		<meta charset="utf-8">
+		<title>My HTML File</title>
+		<link rel="stylesheet" href="http://localhost:8000/bower_components/bootstrap/dist/css/bootstrap.css">
+		<link rel="stylesheet" href="http://localhost:8000/css/app.css">
+
+		<script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
+		<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+		<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+		<script src="http://localhost:8000/bower_components/angular/angular.js"></script>
+		<script src="http://localhost:8000/js/controllers.js"></script>
+		<script src="http://localhost:8000/js/services.js"></script>
+		<script src="http://localhost:8000/js/directives.js"></script>
+								
+	</head>
+	<body ng-controller="PhoneListCtrl">
+
+		<ul>
+			<li ng-repeat="phone in phones">
+				<span>{{phone.name}}</span>
+				<p>{{phone.snippet}}</p>
+			</li>
+		</ul>
+
+		<div id="draggable_objects" >
+			<div class="card" ng-repeat="obj in objects" draggable x="obj.x" y="obj.y" ng-style="{top:obj.y,left:obj.x}">
+				<span>{{obj.name}}</span>
+				<p><span>{{obj.x}}</span>,<span>{{obj.y}}</span></p>
+			</div>
+		</div>
+
+</body>
+</html>

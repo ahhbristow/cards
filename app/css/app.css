@@ -1,0 +1,9 @@
+/* app css stylesheet */
+
+.card {
+	height:100px;
+	width:150px;
+	background-color: yellow;
+	border: 2px solid #bbb;
+	position: absolute;
+}
